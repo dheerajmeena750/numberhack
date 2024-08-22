@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Injector</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .login-container {
+            background: rgba(0, 128, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .login-container input[type="text"],
+        .login-container input[type="submit"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="C:\Users\dheer\Downloads\video.mp4" type="video/mp4">   ‪
+        Your browser does not support the video tag.
+    </video>
+    <div class="content">
+        <div class="login-container">
+            <h1>MASTER</h1>
+            <form id="login-form">
+                <input type="hidden" id="special-key" value="dheeraj123">
+                <input type="text" id="entered-key" name="key" placeholder="Enter key" required>
+                <br>
+                <center>
+                    <input type="submit" value="Login">
+                </center>
+                <br>
+                <a href="https://wa.me/918881167406">Don't have a key? Get one!</a>
+                <br>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const specialKey = document.getElementById('special-key').value;
+        const enteredKeyInput = document.getElementById('entered-key');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const enteredKey = enteredKeyInput.value.trim();
+            if (enteredKey === specialKey) {
+                window.location.href = '10.html'; // Redirect to the second HTML page
+            } else {
+                alert('Invalid key!');
+            }
+        });
+    </script>
+</body>
+</html>

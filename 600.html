@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>300rs Ad Box</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #28a745;
+            color: #fff;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            z-index: 10; /* Ensure the timer is above other content */
+        }
+        .ad-box {
+            background-color: lightblue;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            position: relative; /* Ensure the ad-box is properly contained */
+        }
+        .ad-box img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer" id="timer">10:00</div>
+
+    <div class="ad-box">
+        <img src="600.jpg" alt="600rs Image">
+
+        <div class="form-container">
+            <form action="your-action-url" method="post">
+                <input type="text" name="transaction_id" placeholder="Enter Transaction ID/UTR" 
+                       pattern="\d{12}" maxlength="12" required 
+                       title="Please enter exactly 12 digits">
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Set the time limit in seconds (10 minutes)
+        const timeLimit = 10 * 60;
+        let timeRemaining = timeLimit;
+
+        const timerElement = document.getElementById('timer');
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            if (timeRemaining <= 0) {
+                timerElement.textContent = 'Time is up! Refreshing the page...';
+                setTimeout(() => {
+                    location.reload();
+                }, 1000); // Delay before refreshing
+                return;
+            }
+
+            timeRemaining--;
+            setTimeout(updateTimer, 1000);
+        }
+
+        updateTimer();
+    </script>
+</body>
+</html>
